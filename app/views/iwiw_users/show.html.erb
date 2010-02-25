@@ -1,0 +1,28 @@
+<p>
+  <b>User:</b>
+  <%=h @iwiw_user.user_id %>
+</p>
+
+<p>
+  <b>Token:</b>
+  <%=h @iwiw_user.token %>
+</p>
+
+<p>
+  <b>Secret:</b>
+  <%=h @iwiw_user.secret %>
+</p>
+
+<p>
+  <b>Display name:</b>
+  <%=h @iwiw_user.display_name %>
+</p>
+
+<p>
+  <b>Thumbnail url:</b>
+  <%=h @iwiw_user.thumbnail_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_iwiw_user_path(@iwiw_user) %> |
+<%= link_to 'Back', iwiw_users_path %>
