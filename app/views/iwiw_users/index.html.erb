@@ -1,28 +1,7 @@
-<h1>Listing iwiw_users</h1>
+<% unless logged_in? %>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Token</th>
-    <th>Secret</th>
-    <th>Display name</th>
-    <th>Thumbnail url</th>
-  </tr>
+  <h1>Nem vagy bejelentkezve!</h1>
+  <p>Az <img src="/images/logo_iwiw_proper.png"/> bejelentkezéshez kérlek kattints a bejelentkezés-re!</p>
 
-<% @iwiw_users.each do |iwiw_user| %>
-  <tr>
-    <td><%=h iwiw_user.user_id %></td>
-    <td><%=h iwiw_user.token %></td>
-    <td><%=h iwiw_user.secret %></td>
-    <td><%=h iwiw_user.display_name %></td>
-    <td><%=h iwiw_user.thumbnail_url %></td>
-    <td><%= link_to 'Show', iwiw_user %></td>
-    <td><%= link_to 'Edit', edit_iwiw_user_path(iwiw_user) %></td>
-    <td><%= link_to 'Destroy', iwiw_user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New iwiw_user', new_iwiw_user_path %>

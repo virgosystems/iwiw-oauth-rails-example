@@ -1,0 +1,43 @@
+<% remote_form_for( :oauth_iwiw_api, 
+     :url => call_iwiw_api_path, 
+     :html => { :method => :post, :format => :json }, 
+     :update => 'oauth_iwiw_api_result',
+     :complete => <<-JAVASCRIPT
+     if (typeof JSON != 'undefined') {
+        try {
+          var json = document.getElementById('oauth_iwiw_api_result');
+          var data = JSON.parse(json.innerHTML);
+          json.innerHTML = JSON.stringify(data, null, 3);
+        } catch (e) {
+        }
+      }
+     JAVASCRIPT
+                  ) do |f| %>
+
+  <h1>Rest iWiW API hívás</h1>
+
+  <h2>Kérés</h2>
+  <p>
+    <label for="method">method</label>
+    <%= f.select :method, %w{get post put}.map{|k| [k,k]}, :value => ['get','get'] %>
+  </p>
+
+  <p>
+    <label for="path">path</label>
+    <%= f.text_field :path, :value => '/social/connect/rest/people/@me/@self', :size => 255 %>
+  </p>
+
+  <p>
+    <label for="params">params (JSON {"a":15,"b":"string"})</label><br/>
+    <%= f.text_area :params, :value => '{}', :size => '50x6' %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Mehet' %>
+  </p>
+
+<% end %>
+
+<h2>Válasz</h2><br/>
+<pre id="oauth_iwiw_api_result">
+</pre>

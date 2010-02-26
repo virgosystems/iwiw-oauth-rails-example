@@ -1,28 +1,35 @@
-<p>
-  <b>User:</b>
-  <%=h @iwiw_user.user_id %>
-</p>
+<h1>Felhasználói adatok:</h1>
 
-<p>
-  <b>Token:</b>
-  <%=h @iwiw_user.token %>
-</p>
+<dl>
+  <dt>user_id</dt>
+  <dd><%=h @iwiw_user.user_id %></dd>
+</dl>
 
-<p>
-  <b>Secret:</b>
-  <%=h @iwiw_user.secret %>
-</p>
+<dl>
+  <dt>token<dt>
+  <dd><%=h @iwiw_user.token %></dd>
+</dl>
 
-<p>
-  <b>Display name:</b>
-  <%=h @iwiw_user.display_name %>
-</p>
+<dl>
+  <dt>secret<dt>
+  <dd><%=h @iwiw_user.secret %></dd>
+</dl>
 
-<p>
-  <b>Thumbnail url:</b>
-  <%=h @iwiw_user.thumbnail_url %>
-</p>
+<dl>
+  <dt>screen_name<dt>
+  <dd><%=h @iwiw_user.screen_name %></dd>
+</dl>
+
+<dl>
+  <dt>anonymous<dt>
+  <dd><%=h @iwiw_user.anonymous %></dd>
+</dl>
 
 
-<%= link_to 'Edit', edit_iwiw_user_path(@iwiw_user) %> |
-<%= link_to 'Back', iwiw_users_path %>
+<dl>
+  <dt>thumbnail_url<dt>
+  <dd><img src="<%=h @iwiw_user.thumbnail_url %>"/><%=h @iwiw_user.thumbnail_url %></dd>
+</dl>
+
+
+<%= render :partial => 'call_iwiw_api' %>

@@ -2,16 +2,26 @@
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>IwiwUsers: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
-</head>
-<body>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>IwiwUsers: <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'scaffold' %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
+    <div id="flashbar">
+      
+      <%= content_tag(:div, flash[:notice], :class => 'flash', :id => 'flash' )  + 
+          javascript_tag( visual_effect( :fade , :flash, :duration => 20 ) )  if flash[:notice] %>
 
-<%= yield %>
+      <%= content_tag(:div, flash[:error], :class => 'flasherror') if flash[:error] %>
 
-</body>
+    </div>
+
+    <%= render :partial => "iwiw_users/login" %>
+
+    <%= yield %>
+
+  </body>
 </html>

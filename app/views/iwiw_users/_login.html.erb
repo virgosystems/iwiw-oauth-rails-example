@@ -1,0 +1,7 @@
+<div id='login-bar'>
+  <% if logged_in? -%>
+    Bejelentkezett: <%= current_user.screen_name%> | <%= link_to "Kijelentkezés", signout_path %>
+  <% else -%>
+    <%= link_to "Bejelentkezés az iWiW-vel!",  new_iwiw_user_path %>
+  <% end -%>
+</div>

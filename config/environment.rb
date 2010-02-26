@@ -6,6 +6,17 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+# A devportálon regisztrált alkalmazáshoz tartozó kulcspár:
+# Kulcs (consumer key)
+IWIW_OAUTH_KEY = '65e46d1dc1687ae7d058d7858508ddfe0ccf4c0d'
+# Titkos kulcs (consumer secret)
+IWIW_OAUTH_SECRET = '84d79fba2da2fc155dcc3fd2b1e53b57e9654cc6'
+
+IWIW_OAUTH_SITE = 'http://api.approval.iwiw.hu'
+IWIW_OAUTH_CALLBACK = 'http://ypetya.virgosystems.hu/iwiw_users/callback'
+IWIW_OAUTH_AUTHORIZE_URL = 'http://approval.iwiw.hu/pages/auth/authorize.jsp'
+
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -19,6 +30,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
+  config.gem 'oauth', :version => '>= 0.3.6'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

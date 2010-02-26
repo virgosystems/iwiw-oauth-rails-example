@@ -1,5 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :iwiw_users
+  map.resources :iwiw_users, :only => [:index, :show], :collection => { :callback => :get }
+
+  map.signout '/signout', :controller => :iwiw_users, :action => 'signout'
+
+  map.call_iwiw_api '/call_iwiw_api.:format', :controller => :iwiw_users, :action => 'call_iwiw_api', :method => :post
+
+  map.root :controller => :iwiw_users
 
   # The priority is based upon order of creation: first created -> highest priority.
 

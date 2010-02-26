@@ -1,4 +1,23 @@
 class IwiwUsersController < ApplicationController
+
+  include OauthSystem
+
+  before_filter :oauth_login_required, :except => [ :callback, :signout, :index ]
+
+  def call_iwiw_api
+    response = unless oauth_call_params = params[:oauth_iwiw_api]
+                 'Invalid input'
+               else
+                 oauth_call_params[:params] = JSON.parse(oauth_call_params[:params])
+
+                 self.oauth_agent.iwiw_api( oauth_call_params )
+               end
+
+    respond_to do |format|
+      format.json { render :json => response }
+    end
+  end
+
   # GET /iwiw_users
   # GET /iwiw_users.xml
   def index
@@ -81,5 +100,22 @@ class IwiwUsersController < ApplicationController
       format.html { redirect_to(iwiw_users_url) }
       format.xml  { head :ok }
     end
+  end
+
+  protected
+
+  def init_user
+		begin
+			user_id = params[:id] unless params[:id].nil?
+			user_id = params[:user_id] unless params[:user_id].nil?
+
+			@iwiw_user = IwiwUser.find_by_user_id( user_id )
+
+			raise ActiveRecord::RecordNotFound unless @iwiw_user
+		rescue
+			flash[:error] = 'Sorry, that is not a valid user.'
+			redirect_to root_path
+			return false
+		end
   end
 end
