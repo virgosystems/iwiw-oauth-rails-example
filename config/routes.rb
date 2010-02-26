@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :iwiw_users, :only => [:index, :show], :collection => { :callback => :get }
+  map.resources :iwiw_users, :only => [:new, :index, :show], :collection => { :callback => :get }
 
   map.signout '/signout', :controller => :iwiw_users, :action => 'signout'
 
