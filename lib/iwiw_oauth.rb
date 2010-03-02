@@ -82,16 +82,14 @@ class IwiwOauth
   def iwiw_api options = { 'method' => 'get', 'path' => '/social/connect/rest/people/@me/@self',
     'params' => {}}
 
-    post_content_type = {'Content-Type' => 'application/json'}
-
     response = case options['method']
                when 'get'
                  http_params = options['params'].map{|k,v| "#{k}=#{v}"}.join('&')
                  access_token.get("#{options['path']}?#{http_params}")
                when 'put'
-                 access_token.put(options['path'],options['params'], post_content_type )
+                 access_token.put(options['path'],options['params'], {'Content-Type' => 'application/json'} )
                else
-                 access_token.post(options['path'],options['params'], post_content_type )
+                 access_token.post(options['path'],options['params'], {'Content-Type' => 'application/json'} )
                end
 
     if response.is_a? Net::HTTPSuccess
