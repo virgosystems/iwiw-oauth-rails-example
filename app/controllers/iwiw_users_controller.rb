@@ -13,7 +13,7 @@ class IwiwUsersController < ApplicationController
                  self.oauth_agent.iwiw_api( oauth_call_params )
                end
 
-    unless response.is_a? Net::HTTPSuccess
+    unless response.is_a? Hash
       response = "class: #{response.class} code: #{response.code} message: #{ response.message }"
     end
 
