@@ -82,7 +82,7 @@ class IwiwOauth
   def iwiw_api options = { 'method' => 'get', 'path' => '/social/connect/rest/people/@me/@self',
     'params' => {}}
 
-    post_content_type = 'Content-type'=> 'application/json; charset=utf-8'}
+    post_content_type = {'Content-type'=> 'application/json; charset=utf-8'}
 
     response = case options['method']
                when 'get'
