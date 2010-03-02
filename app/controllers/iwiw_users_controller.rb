@@ -8,7 +8,7 @@ class IwiwUsersController < ApplicationController
     response = unless oauth_call_params = params[:oauth_iwiw_api]
                  'Invalid input'
                else
-                 oauth_call_params[:params] = JSON.parse(oauth_call_params[:params])
+                 oauth_call_params['params'] = JSON.parse(oauth_call_params[:params])
 
                  self.oauth_agent.iwiw_api( oauth_call_params )
                end
