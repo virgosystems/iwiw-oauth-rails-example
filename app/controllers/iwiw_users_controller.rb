@@ -13,6 +13,10 @@ class IwiwUsersController < ApplicationController
                  self.oauth_agent.iwiw_api( oauth_call_params )
                end
 
+    unless response.is_a? Net::HTTPSuccess
+      response = response.inspect
+    end
+
     respond_to do |format|
       format.json { render :json => response }
     end

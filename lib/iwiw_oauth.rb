@@ -92,16 +92,11 @@ class IwiwOauth
                  access_token.post(options['path'],options['params'])
                end
 
-    case response
-    when Net::HTTPSuccess
-      response_hash = JSON.parse(response.body)
-
-      raise IwiwOauth::UnexpectedResponse unless response_hash.is_a? Hash
-
-      response_hash
-    else
-      raise IwiwOauth::APIError
+    if response.is_a? Net::HTTPSuccess
+      return response_hash = JSON.parse(response.body)
     end
+
+    response
 
   rescue => err
     puts "Exception in iwiw_api method call: #{err}"
