@@ -8,12 +8,12 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 # A devportálon regisztrált alkalmazáshoz tartozó kulcspár:
 # Kulcs (consumer key)
-IWIW_OAUTH_KEY = '65e46d1dc1687ae7d058d7858508ddfe0ccf4c0d'
+IWIW_OAUTH_KEY = '1630a9d348d6aa633dfb8ee317fde0c59f352845'
 # Titkos kulcs (consumer secret)
-IWIW_OAUTH_SECRET = '84d79fba2da2fc155dcc3fd2b1e53b57e9654cc6'
+IWIW_OAUTH_SECRET = 'dfdb7cda77ec8f48d2d85785aa8a96cc37addfe6'
 
 IWIW_OAUTH_SITE = 'http://api.approval.iwiw.hu'
-IWIW_OAUTH_CALLBACK = 'http://ypetya.virgosystems.hu/iwiw_users/callback'
+IWIW_OAUTH_CALLBACK = 'http://sharp-mist-23.heroku.com/iwiw_users/callback'
 IWIW_OAUTH_AUTHORIZE_URL = 'http://approval.iwiw.hu/pages/auth/authorize.jsp'
 
 
