@@ -14,7 +14,7 @@ class IwiwUsersController < ApplicationController
                end
 
     unless response.is_a? Net::HTTPSuccess
-      response = "class: #{resonse.class} code: #{response.code} status: #{ response.status }"
+      response = "class: #{response.class} code: #{response.code} status: #{ response.status }"
     end
 
     respond_to do |format|
