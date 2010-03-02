@@ -87,9 +87,11 @@ class IwiwOauth
                  http_params = options['params'].map{|k,v| "#{k}=#{v}"}.join('&')
                  access_token.get("#{options['path']}?#{http_params}")
                when 'put'
-                 access_token.put(options['path'],options['params'], {'Content-Type' => 'application/json'} )
+                 access_token.put(options['path'],options['params'], 
+                   { 'Accept' => 'application/json', 'Content-Type' => 'application/json'} )
                else
-                 access_token.post(options['path'],options['params'], {'Content-Type' => 'application/json'} )
+                 access_token.post(options['path'],options['params'],
+                   { 'Accept' => 'application/json', 'Content-Type' => 'application/json'} )
                end
 
     if response.is_a? Net::HTTPSuccess
