@@ -1,11 +1,10 @@
 <% remote_form_for( :oauth_iwiw_api, 
      :url => call_iwiw_api_path, 
      :html => { :method => :post, :format => :json }, 
-#     :update => 'oauth_iwiw_api_result',
      :success => <<-JAVASCRIPT
      if (typeof JSON != 'undefined') {
         try {
-          var data = JSON.parse(transport.responseText);
+          var data = JSON.parse(request.responseText);
 	  document.getElementById('oauth_iwiw_api_result').innerHTML = JSON.stringify(data, null, 3);
         } catch (e) {
         }
