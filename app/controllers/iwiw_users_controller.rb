@@ -18,7 +18,7 @@ class IwiwUsersController < ApplicationController
     end
 
     respond_to do |format|
-      format.json { render :json => URI.encode( response ) }
+      format.json { render :json => response }
     end
   end
 
