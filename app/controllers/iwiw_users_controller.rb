@@ -22,6 +22,10 @@ class IwiwUsersController < ApplicationController
     end
   end
 
+  rescue_from Exception do |ex|
+    render :text => ex, :status => 200
+  end
+
   # GET /iwiw_users
   # GET /iwiw_users.xml
   def index
@@ -109,17 +113,17 @@ class IwiwUsersController < ApplicationController
   protected
 
   def init_user
-		begin
-			user_id = params[:id] unless params[:id].nil?
-			user_id = params[:user_id] unless params[:user_id].nil?
+    begin
+	user_id = params[:id] unless params[:id].nil?
+	user_id = params[:user_id] unless params[:user_id].nil?
 
-			@iwiw_user = IwiwUser.find_by_user_id( user_id )
+	@iwiw_user = IwiwUser.find_by_user_id( user_id )
 
-			raise ActiveRecord::RecordNotFound unless @iwiw_user
-		rescue
-			flash[:error] = 'Sorry, that is not a valid user.'
-			redirect_to root_path
-			return false
-		end
+	raise ActiveRecord::RecordNotFound unless @iwiw_user
+    rescue
+	flash[:error] = 'Sorry, that is not a valid user.'
+	redirect_to root_path
+	return false
+    end
   end
 end
